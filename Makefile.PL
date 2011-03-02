@@ -1,7 +1,6 @@
 use inc::Module::Install::DSL 0.92;
 
 author		jeffery@astraaustralis.com.au
-license		restrictive
 all_from	lib/Net/CampaignMonitor.pm
 requires	REST::Client	171
 requires	XML::Simple	2.18

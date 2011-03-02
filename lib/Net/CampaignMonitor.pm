@@ -5,7 +5,7 @@ use REST::Client;
 use Params::Util qw{_STRING _NONNEGINT _POSINT _HASH _HASHLIKE};
 use JSON;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub new	{
 		
@@ -1269,9 +1269,17 @@ This documentation refers to version 0.01.
 
 =head1 DESCRIPTION
 
- B<Net::CampaignMonitor> provides a Perl wrapper to the Campaign Monitor API (v3).
+B<Net::CampaignMonitor> provides a Perl wrapper to the Campaign Monitor API (v3).
  
 =head1 METHODS
+
+All methods return a hash containing the Campaign Monitor response code, the headers and the actual response.
+
+	my %results = (
+		code     => '',
+		response => '',
+		headers  => ''
+	}
 
 =head2 Construction and setup
 
@@ -1285,14 +1293,11 @@ This documentation refers to version 0.01.
 
 Construct a new Net::CampaignMonitor object. Takes an optional hash reference of config options. The options are:
 
-api_key
-	The api key for the Campaign Monitor account. If none is supplied the only function which will work is L<apikey>.
+api_key - The api key for the Campaign Monitor account. If none is supplied the only function which will work is L<account_apikey>.
 
-secure
-	Set to 1 (secure) or 0 (insecure) to determine whether to use http or https. Defaults to secure.
+secure - Set to 1 (secure) or 0 (insecure) to determine whether to use http or https. Defaults to secure.
 
-timeout
-	Set the timeout for the authentication. Defaults to 600 seconds.
+timeout - Set the timeout for the authentication. Defaults to 600 seconds.
 
 =head2 account_clients
 
@@ -1328,7 +1333,7 @@ L<Getting valid timezones|http://www.campaignmonitor.com/api/account/#getting_ti
 
 	my $timezones = $cm->account_timezones();
 
-=head2 account_systemdate ()
+=head2 account_systemdate
 
 L<Getting current date|http://www.campaignmonitor.com/api/account/#getting_systemdate>
 
@@ -1973,6 +1978,10 @@ L<Updating a template|http://www.campaignmonitor.com/api/templates/#updating_a_t
 L<Deleting a template|http://www.campaignmonitor.com/api/templates/#deleting_a_template>
 
 	my $deleted_template = $cm->templates_delete($template_id);
+
+=head1 BUGS
+
+Not quite a bug. This module uses L<REST::Client>. REST::Client fails to install properly on Windows due to this L<bug|https://rt.cpan.org/Public/Bug/Display.html?id=65803>. You will need to make REST::Client install without running tests to install it.
 
 =head1 AUTHOR
 
