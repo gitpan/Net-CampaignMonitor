@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 use strict;
-use Test::More tests => 5;
+use Test::More tests => 4;
 use Net::CampaignMonitor;
 
 my $cm = Net::CampaignMonitor->new({
@@ -16,5 +16,3 @@ ok( $cm->account_countries()->{'code'} eq '200', 'Countries' );
 ok( $cm->account_timezones()->{'code'} eq '200', 'Timezones' );
 
 ok( $cm->account_systemdate()->{'code'} eq '200', 'System Date' );
-
-ok( $cm->account_apikey("http://perltest.createsend.com/", "perltest", "tUvu3u8A")->{'code'} eq '200', 'API Key' );

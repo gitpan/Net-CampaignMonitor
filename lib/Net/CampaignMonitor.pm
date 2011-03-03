@@ -5,7 +5,7 @@ use REST::Client;
 use Params::Util qw{_STRING _NONNEGINT _POSINT _HASH _HASHLIKE};
 use JSON;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub new	{
 		
@@ -1279,7 +1279,7 @@ All methods return a hash containing the Campaign Monitor response code, the hea
 		code     => '',
 		response => '',
 		headers  => ''
-	}
+	);
 
 =head2 Construction and setup
 
@@ -1293,7 +1293,7 @@ All methods return a hash containing the Campaign Monitor response code, the hea
 
 Construct a new Net::CampaignMonitor object. Takes an optional hash reference of config options. The options are:
 
-api_key - The api key for the Campaign Monitor account. If none is supplied the only function which will work is L<account_apikey>.
+api_key - The api key for the Campaign Monitor account. If none is supplied the only function which will work is L<account_apikey|http://search.cpan.org/~jeffery/Net-CampaignMonitor-0.02/lib/Net/CampaignMonitor.pm#account_apikey>.
 
 secure - Set to 1 (secure) or 0 (insecure) to determine whether to use http or https. Defaults to secure.
 
@@ -1978,6 +1978,10 @@ L<Updating a template|http://www.campaignmonitor.com/api/templates/#updating_a_t
 L<Deleting a template|http://www.campaignmonitor.com/api/templates/#deleting_a_template>
 
 	my $deleted_template = $cm->templates_delete($template_id);
+
+=head1 NOTES
+
+If installation fails because test 03_clients.t fails please wait and try again a little later. The tests use a Campaign Monitor account to test all the api calls. One of the early tests, which all later tests rely on, creates a new client. There is a hard limit of a maximum of five (5) new clients being created in 30 minutes. If others are installing the module around the same time as you that limit may be met meaning the test will fail. If this occurs, please try again in 20-30 minutes or install without the tests.
 
 =head1 BUGS
 
