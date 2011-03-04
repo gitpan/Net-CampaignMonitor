@@ -1,3 +1,6 @@
+0.04 Fri 04 March 2011
+	- Modified the tests to require the user to enter the API key.
+
 0.03 Fri 04 March 2011
 	- Added comment to the POD regarding test failure due to CM API limits.
 	- Removed apikey test.

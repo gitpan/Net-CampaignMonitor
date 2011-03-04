@@ -5,7 +5,7 @@ use REST::Client;
 use Params::Util qw{_STRING _NONNEGINT _POSINT _HASH _HASHLIKE};
 use JSON;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub new	{
 		
@@ -1979,9 +1979,13 @@ L<Deleting a template|http://www.campaignmonitor.com/api/templates/#deleting_a_t
 
 	my $deleted_template = $cm->templates_delete($template_id);
 
-=head1 NOTES
+=head1 INSTALLATION NOTES
 
-If installation fails because test 03_clients.t fails please wait and try again a little later. The tests use a Campaign Monitor account to test all the api calls. One of the early tests, which all later tests rely on, creates a new client. There is a hard limit of a maximum of five (5) new clients being created in 30 minutes. If others are installing the module around the same time as you that limit may be met meaning the test will fail. If this occurs, please try again in 20-30 minutes or install without the tests.
+In order to run the full test suite you will need to provide an API Key. This can be done in the following way.
+
+	cpan CAMPAIGN_MONITOR_API_KEY=<your_api_key> Net::CampaignMonitor
+	
+If you do not do this almost all of the tests will be skipped.
 
 =head1 BUGS
 

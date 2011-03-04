@@ -3,14 +3,27 @@
 use strict;
 use Test::More tests => 2;
 use Net::CampaignMonitor;
+use Params::Util qw{_STRING};
 
-my $cm = Net::CampaignMonitor->new({
-		secure  => 1, 
-		api_key => 'bede1bad6a17b4847b0db12352674303',
-	  });
+my $api_key = '';
+my $cm;
 
-my $client_id = $cm->account_clients()->{response}->[0]->{ClientID};
-my $list_id   = $cm->client_lists($client_id)->{response}->[0]->{ListID};
+if ( Params::Util::_STRING($ENV{'CAMPAIGN_MONITOR_API_KEY'}) ) {
+	
+	$api_key = $ENV{'CAMPAIGN_MONITOR_API_KEY'};
+	
+	$cm = Net::CampaignMonitor->new({
+			secure  => 1, 
+			api_key => $api_key,
+		  });
+}
 
-ok( $cm->list_delete($list_id)->{code} eq '200', 'Deleted list');
-ok( $cm->client_delete($client_id)->{code} eq '200', 'Deleted client' );
+SKIP: {
+	skip 'Invalid API Key supplied', 2 if $api_key eq '';
+
+	my $client_id = $cm->account_clients()->{response}->[0]->{ClientID};
+	my $list_id   = $cm->client_lists($client_id)->{response}->[0]->{ListID};
+
+	ok( $cm->list_delete($list_id)->{code} eq '200', 'Deleted list');
+	ok( $cm->client_delete($client_id)->{code} eq '200', 'Deleted client' );
+}
