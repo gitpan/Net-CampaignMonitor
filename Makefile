@@ -11,7 +11,7 @@
 
 #   MakeMaker Parameters:
 
-#     ABSTRACT => q[A Perl wrapper to the Campaign Monitor API.]
+#     ABSTRACT => q[A Perl wrapper for the Campaign Monitor API.]
 #     AUTHOR => q[jeffery@astraaustralis.com.au]
 #     BUILD_REQUIRES => { ExtUtils::MakeMaker=>q[6.42] }
 #     DISTNAME => q[Net-CampaignMonitor]
@@ -19,8 +19,8 @@
 #     MIN_PERL_VERSION => q[5.008005]
 #     NAME => q[Net::CampaignMonitor]
 #     NO_META => q[1]
-#     PREREQ_PM => { LWP::UserAgent=>q[5.835], Params::Util=>q[1.01], ExtUtils::MakeMaker=>q[6.42], XML::Simple=>q[2.18], JSON=>q[2.27], REST::Client=>q[171], Carp=>q[1.11] }
-#     VERSION => v1.21.0
+#     PREREQ_PM => { LWP::UserAgent=>q[5.835], Params::Util=>q[1.01], MIME::Base64=>q[3.13], ExtUtils::MakeMaker=>q[6.42], XML::Simple=>q[2.18], JSON=>q[2.27], REST::Client=>q[171], Carp=>q[1.11] }
+#     VERSION => v2.0.0
 #     VERSION_FROM => q[lib/Net/CampaignMonitor.pm]
 #     dist => {  }
 #     realclean => { FILES=>q[MYMETA.yml] }
@@ -62,11 +62,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Net::CampaignMonitor
 NAME_SYM = Net_CampaignMonitor
-VERSION = v1.21.0
+VERSION = v2.0.0
 VERSION_MACRO = VERSION
-VERSION_SYM = v1_21_0
+VERSION_SYM = v2_0_0
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = v1.21.0
+XS_VERSION = v2.0.0
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -266,7 +266,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Net-CampaignMonitor
-DISTVNAME = Net-CampaignMonitor-v1.21.0
+DISTVNAME = Net-CampaignMonitor-v2.0.0
 
 
 # --- MakeMaker macro section:
@@ -774,14 +774,15 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="v1.21.0">' > $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <ABSTRACT>A Perl wrapper to the Campaign Monitor API.</ABSTRACT>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="v2.0.0">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <ABSTRACT>A Perl wrapper for the Campaign Monitor API.</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>jeffery@astraaustralis.com.au</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <PERLCORE VERSION="5,008005,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Carp::" VERSION="1.11" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="JSON::" VERSION="2.27" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="LWP::UserAgent" VERSION="5.835" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="MIME::Base64" VERSION="3.13" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Params::Util" VERSION="1.01" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="REST::Client" VERSION="171" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="XML::Simple" VERSION="2.18" />' >> $(DISTNAME).ppd
