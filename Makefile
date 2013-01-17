@@ -20,7 +20,7 @@
 #     NAME => q[Net::CampaignMonitor]
 #     NO_META => q[1]
 #     PREREQ_PM => { LWP::UserAgent=>q[5.835], Params::Util=>q[1.01], MIME::Base64=>q[3.13], ExtUtils::MakeMaker=>q[6.42], XML::Simple=>q[2.18], JSON=>q[2.27], REST::Client=>q[171], Carp=>q[1.11] }
-#     VERSION => v2.0.0
+#     VERSION => v2.0.1
 #     VERSION_FROM => q[lib/Net/CampaignMonitor.pm]
 #     dist => {  }
 #     realclean => { FILES=>q[MYMETA.yml] }
@@ -33,21 +33,21 @@
 # These definitions are from config.sh (via /System/Library/Perl/5.12/darwin-thread-multi-2level/Config.pm).
 # They may have been overridden via Makefile.PL or on the command line.
 AR = ar
-CC = llvm-gcc-4.2
+CC = clang
 CCCDLFLAGS =  
 CCDLFLAGS =  
 DLEXT = bundle
 DLSRC = dl_dlopen.xs
 EXE_EXT = 
 FULL_AR = /usr/bin/ar
-LD = llvm-gcc-4.2 -mmacosx-version-min=10.7
-LDDLFLAGS = -arch x86_64 -arch i386 -bundle -undefined dynamic_lookup -L/usr/local/lib -fstack-protector
-LDFLAGS = -arch x86_64 -arch i386 -fstack-protector -L/usr/local/lib
+LD = clang -mmacosx-version-min=10.8
+LDDLFLAGS = -arch i386 -arch x86_64 -bundle -undefined dynamic_lookup -L/usr/local/lib -fstack-protector
+LDFLAGS = -arch i386 -arch x86_64 -fstack-protector -L/usr/local/lib
 LIBC = 
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = darwin
-OSVERS = 11.0
+OSVERS = 12.0
 RANLIB = /usr/bin/ar s
 SITELIBEXP = /Library/Perl/5.12
 SITEARCHEXP = /Library/Perl/5.12/darwin-thread-multi-2level
@@ -62,11 +62,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Net::CampaignMonitor
 NAME_SYM = Net_CampaignMonitor
-VERSION = v2.0.0
+VERSION = v2.0.1
 VERSION_MACRO = VERSION
-VERSION_SYM = v2_0_0
+VERSION_SYM = v2_0_1
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = v2.0.0
+XS_VERSION = v2.0.1
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -83,13 +83,13 @@ PREFIX = $(SITEPREFIX)
 PERLPREFIX = /
 SITEPREFIX = /usr/local
 VENDORPREFIX = /usr/local
-INSTALLPRIVLIB = /Library/Perl/Updates/5.12.3
+INSTALLPRIVLIB = /Library/Perl/Updates/5.12.4
 DESTINSTALLPRIVLIB = $(DESTDIR)$(INSTALLPRIVLIB)
 INSTALLSITELIB = /Library/Perl/5.12
 DESTINSTALLSITELIB = $(DESTDIR)$(INSTALLSITELIB)
 INSTALLVENDORLIB = /Network/Library/Perl/5.12
 DESTINSTALLVENDORLIB = $(DESTDIR)$(INSTALLVENDORLIB)
-INSTALLARCHLIB = /Library/Perl/Updates/5.12.3/darwin-thread-multi-2level
+INSTALLARCHLIB = /Library/Perl/Updates/5.12.4/darwin-thread-multi-2level
 DESTINSTALLARCHLIB = $(DESTDIR)$(INSTALLARCHLIB)
 INSTALLSITEARCH = /Library/Perl/5.12/darwin-thread-multi-2level
 DESTINSTALLSITEARCH = $(DESTDIR)$(INSTALLSITEARCH)
@@ -266,7 +266,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Net-CampaignMonitor
-DISTVNAME = Net-CampaignMonitor-v2.0.0
+DISTVNAME = Net-CampaignMonitor-v2.0.1
 
 
 # --- MakeMaker macro section:
@@ -774,7 +774,7 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="v2.0.0">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="v2.0.1">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>A Perl wrapper for the Campaign Monitor API.</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>jeffery@astraaustralis.com.au</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
