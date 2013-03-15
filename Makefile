@@ -20,7 +20,7 @@
 #     NAME => q[Net::CampaignMonitor]
 #     NO_META => q[1]
 #     PREREQ_PM => { LWP::UserAgent=>q[5.835], Params::Util=>q[1.01], MIME::Base64=>q[3.13], ExtUtils::MakeMaker=>q[6.42], XML::Simple=>q[2.18], JSON=>q[2.27], REST::Client=>q[171], Carp=>q[1.11] }
-#     VERSION => v2.0.1
+#     VERSION => v2.0.2
 #     VERSION_FROM => q[lib/Net/CampaignMonitor.pm]
 #     dist => {  }
 #     realclean => { FILES=>q[MYMETA.yml] }
@@ -62,11 +62,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Net::CampaignMonitor
 NAME_SYM = Net_CampaignMonitor
-VERSION = v2.0.1
+VERSION = v2.0.2
 VERSION_MACRO = VERSION
-VERSION_SYM = v2_0_1
+VERSION_SYM = v2_0_2
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = v2.0.1
+XS_VERSION = v2.0.2
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -266,7 +266,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Net-CampaignMonitor
-DISTVNAME = Net-CampaignMonitor-v2.0.1
+DISTVNAME = Net-CampaignMonitor-v2.0.2
 
 
 # --- MakeMaker macro section:
@@ -774,7 +774,7 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="v2.0.1">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="v2.0.2">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>A Perl wrapper for the Campaign Monitor API.</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>jeffery@astraaustralis.com.au</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
