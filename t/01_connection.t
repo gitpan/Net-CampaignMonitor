@@ -5,29 +5,28 @@ use Test::More;
 use Params::Util qw{_STRING};
 
 if ( Params::Util::_STRING($ENV{'CAMPAIGN_MONITOR_API_KEY'}) ) {
-	
-	my $api_key = $ENV{'CAMPAIGN_MONITOR_API_KEY'};
-	
-	plan tests => 9;
 
-	use_ok( 'Net::CampaignMonitor' );
+  my $api_key = $ENV{'CAMPAIGN_MONITOR_API_KEY'};
 
+  plan tests => 9;
+
+  use_ok( 'Net::CampaignMonitor' );
 
   my $cm_secure_apikey = Net::CampaignMonitor->new({
     secure  => 1,
     api_key => $api_key,
   });
 
-	my $cm_insecure_apikey = Net::CampaignMonitor->new({
+  my $cm_insecure_apikey = Net::CampaignMonitor->new({
     secure  => 0,
     api_key => $api_key,
   });
 
-	my $cm_secure = Net::CampaignMonitor->new({
+  my $cm_secure = Net::CampaignMonitor->new({
     secure  => 1,
   });
 
-	my $cm_insecure = Net::CampaignMonitor->new({
+  my $cm_insecure = Net::CampaignMonitor->new({
     secure  => 0,
   });
 
@@ -45,9 +44,7 @@ if ( Params::Util::_STRING($ENV{'CAMPAIGN_MONITOR_API_KEY'}) ) {
   ok( Params::Util::_POSINT( $results->{code} ), 'Result code' );
   ok( Params::Util::_HASH( $results->{headers} ), 'Result headers' );
   ok( Params::Util::_ARRAY0( $results->{response} ), 'Result response' );
-}
-
-else {
+} else {
 	plan tests => 1;
 
 	use_ok( 'Net::CampaignMonitor' );
