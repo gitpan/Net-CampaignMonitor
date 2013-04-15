@@ -11,7 +11,7 @@ use Carp;
 use URI;
 use URI::Escape;
 
-use version; our $VERSION = version->declare("v2.1.1");
+use version; our $VERSION = version->declare("v2.1.2");
 our $CAMPAIGN_MONITOR_DOMAIN = 'api.createsend.com';
 
 sub authorize_url {
@@ -325,7 +325,7 @@ sub client_listsforemail {
   my $client_id  = $request{clientid};
   my $email      = $request{email};
 
-  $self->_rest(GET => [ clients => $client_id, 'suppressionlist' ]);
+  $self->_rest(GET => [ clients => $client_id, 'listsforemail' ], { email => $email });
 
   return $self->_build_results();
 }
@@ -1275,7 +1275,7 @@ Net::CampaignMonitor - A Perl wrapper for the Campaign Monitor API.
 
 =head1 VERSION
 
-This documentation refers to version v2.1.1.
+This documentation refers to version v2.1.2.
 
 =head1 SYNOPSIS
 
