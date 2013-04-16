@@ -11,7 +11,7 @@ use Carp;
 use URI;
 use URI::Escape;
 
-use version; our $VERSION = version->declare("v2.1.2");
+use version; our $VERSION = version->declare("v2.2.0");
 our $CAMPAIGN_MONITOR_DOMAIN = 'api.createsend.com';
 
 sub authorize_url {
@@ -276,6 +276,14 @@ sub account_getprimarycontact {
   my ($self) = @_;
 
   $self->_rest(GET => 'primarycontact');
+
+  return $self->_build_results();
+}
+
+sub account_externalsession {
+  my ($self, %request) = @_;
+
+  $self->_rest(PUT => 'externalsession', undef, \%request);
 
   return $self->_build_results();
 }
@@ -1275,7 +1283,7 @@ Net::CampaignMonitor - A Perl wrapper for the Campaign Monitor API.
 
 =head1 VERSION
 
-This documentation refers to version v2.1.2.
+This documentation refers to version v2.2.0.
 
 =head1 SYNOPSIS
 
@@ -1479,6 +1487,18 @@ L<Sets the primary contact for the account to be the administrator with the spec
 L<Returns the email address of the administrator who is selected as the primary contact for this account.|http://www.campaignmonitor.com/api/account/#getting_primary_contact>
 
   my $primarycontact_email = $cm->account_getprimarycontact();
+
+=head2 account_externalsession
+
+L<Returns a URL which initiates a new external Campaign Monitor login session for the user with the given email.|http://www.campaignmonitor.com/api/account/#single_sign_on>
+
+  my $external_session = $cm->account_externalsession((
+    'Email'        => 'example@example.com',
+    'Chrome'       => 'None',
+    'Url'          => '/subscribers/search?search=belle@example.com',
+    'IntegratorID' => 'a1b2c3d4e5f6',
+    'ClientID'     => 'aaa111bbb222ccc333'
+  ));
 
 =head2 campaigns
 
