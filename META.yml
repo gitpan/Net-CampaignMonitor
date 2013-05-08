@@ -26,10 +26,11 @@ requires:
   MIME::Base64: 3.13
   REST::Client: 171
   XML::Simple: 2.18
+  Test::Exception: 0.32
   perl: 5.8.5
 resources:
   license: http://dev.perl.org/licenses/
   bugtracker: https://github.com/campaignmonitor/createsend-perl/issues
   homepage: http://campaignmonitor.github.com/createsend-perl/
   repository: https://github.com/campaignmonitor/createsend-perl.git
-version: v2.2.0
+version: v2.2.1
